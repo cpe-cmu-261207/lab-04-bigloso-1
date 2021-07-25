@@ -3,12 +3,6 @@ let currentInput = ""
 const listInput = (ev) => {
     currentInput = ev.target.value
 }
-let listadd = { dolist:[]}
-
-if (localStorage.length === 0) {
-    window.localStorage.setItem('done', 0)
-    window.localStorage.setItem('list', 0)
-}
 
 const mainDiv = document.createElement('div')
 mainDiv.setAttribute('class', 'max-w-sm mx-auto text-lg')
