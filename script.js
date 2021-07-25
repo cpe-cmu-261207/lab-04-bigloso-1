@@ -3,11 +3,17 @@ let currentInput = ""
 const listInput = (ev) => {
     currentInput = ev.target.value
 }
+let listadd = { dolist:[]}
+
+if (localStorage.length === 0) {
+    window.localStorage.setItem('done', 0)
+    window.localStorage.setItem('list', 0)
+}
 
 const mainDiv = document.createElement('div')
-mainDiv.setAttribute('class', 'max-w-sm mx-auto text-lgs')
+mainDiv.setAttribute('class', 'max-w-sm mx-auto text-lg')
 const comDiv = document.createElement('div')
-comDiv.setAttribute('class', 'max-w-sm mx-auto  text-lgs rounded-md bg-blue-900 text-white')
+comDiv.setAttribute('class', 'max-w-sm mx-auto p-2  text-lg rounded-md  text-white transform ')
 
 const input = document.getElementById("myinput")
 input.addEventListener('keyup', (ev) => {
@@ -19,24 +25,22 @@ input.addEventListener('keyup', (ev) => {
 
 const addlist = () => {
     const Taskspan = document.createElement('p')
-    Taskspan.setAttribute('class', 'group flex justify-between p-2 border-b-2 transform hover:-translate-y-1 hover:scale-110 transition duration-200 ease-in-out rounded-md hover:shadow-lg bg-white')
+    Taskspan.setAttribute('class', 'group flex justify-between p-2  transform hover:bg-blue-100 hover:scale-105 transition duration-100 ease-in-out rounded-md hover:shadow-lg bg-white')
     const span = document.createElement('p')
     const btndiv = document.createElement('div')
-    btndiv.setAttribute('class', 'space-x-4')
+    btndiv.setAttribute('class', 'space-x-2')
     if (currentInput != "") {
         span.innerHTML = currentInput
         Taskspan.append(span)
-
-
         const delBtn = document.createElement('button')
-        delBtn.setAttribute('class', 'text-white  pr-3 pl-3 group-hover:bg-red-600  rounded-lg')
+        delBtn.setAttribute('class', 'text-white  px-4 group-hover:bg-red-600  rounded-md')
         delBtn.innerHTML = "Delete"
         delBtn.addEventListener('click', () => {
             mainDiv.removeChild(Taskspan)
         })
 
         const comBtn = document.createElement('button')
-        comBtn.setAttribute('class', 'text-white  pr-4 pl-4 group-hover:bg-green-600  rounded-lg')
+        comBtn.setAttribute('class', 'text-white  px-4 group-hover:bg-green-600  rounded-md')
         comBtn.innerHTML = "Done"
         comBtn.addEventListener('click', () => {
             const del = document.createElement('del')
